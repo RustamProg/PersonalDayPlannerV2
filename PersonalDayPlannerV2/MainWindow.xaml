@@ -1,0 +1,75 @@
+﻿<Window x:Class="PersonalDayPlannerV2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonalDayPlannerV2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800" Background="#9e2828" WindowStartupLocation="CenterScreen" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.06*"/> 
+            <RowDefinition Height="*"/> 
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="14" Content="x" 
+                    Style="{StaticResource mediumButtonStyle}" 
+                    Click="close_Program" Margin="3"
+                    VerticalAlignment="Center" FontSize="12"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="0.01*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                       Grid.Column="1" Fill="RosyBrown" Margin="0 0 0 20"/>
+            <StackPanel Orientation="Vertical" Margin="40">
+                <Image Source="Resources/logo.png" Margin="60 0 60 0"/>
+                <TextBlock Text="Имя пользователя" 
+                           Style="{StaticResource mediumFontStyle}" 
+                           HorizontalAlignment="Center"
+                           Margin="0 20 0 10"/>
+                <TextBox Style="{StaticResource mediumFontStyle}" 
+                         Margin="20 0 20 10"
+                         x:Name="usernameField"
+                         Text="rustam6546"/>
+                <TextBlock Text="Пароль" 
+                           Style="{StaticResource mediumFontStyle}" 
+                           HorizontalAlignment="Center"
+                           Margin="0 0 0 10"/>
+                <PasswordBox Margin="20 0 20 10" x:Name="passwordField" Password="12345678"/>
+                <Button Margin="50 10 50 0" Content="Войти" 
+                        MinHeight="30"
+                        Click="login_Profile"
+                        Style="{StaticResource mediumButtonStyle}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="2"
+                        Orientation="Vertical" Margin="80">
+                <TextBlock Style="{StaticResource largeFontStyle}" Text="Создайте профиль"
+                           HorizontalAlignment="Center" Margin="0 0 0 30"/>
+                <Image Source="Resources/account_logo.png" Margin="100 0 100 0"/>
+                <Button Content="Создать профиль" Style="{StaticResource mediumButtonStyle}" 
+                        Margin="0 30 0 0" Click="open_Registration"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

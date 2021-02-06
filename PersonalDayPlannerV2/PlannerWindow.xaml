@@ -1,0 +1,39 @@
+﻿<Window x:Class="PersonalDayPlannerV2.PlannerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonalDayPlannerV2"
+        mc:Ignorable="d"
+        Title="PlannerWindow" Height="600" Width="1000" WindowStartupLocation="CenterScreen" Background="#F08080" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <GridSplitter Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                          Background="Black" Height="2" ShowsPreview="True"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <GridSplitter Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                          Background="Black" Width="2" ShowsPreview="True"/>
+
+
+            <Grid x:Name="mainGridView" Grid.Row="0" Grid.Column="2">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                              VerticalScrollBarVisibility="Auto">
+                    <WrapPanel x:Name="bigCalendar" Margin="10">
+
+                    </WrapPanel>
+                </ScrollViewer>
+            </Grid>
+            
+            
+        </Grid>
+    </Grid>
+</Window>

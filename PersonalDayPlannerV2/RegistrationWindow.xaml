@@ -1,0 +1,54 @@
+﻿<Window x:Class="PersonalDayPlannerV2.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonalDayPlannerV2"
+        mc:Ignorable="d"
+        Title="RegistrationWindow" Height="550" Width="400" Background="#9e2828" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel x:Name="fieldsPanel" Orientation="Vertical" Margin="50">
+            <TextBlock Text="Создание профиля" Style="{StaticResource largeFontStyle}" 
+                       HorizontalAlignment="Center"/>
+            <TextBlock Text="Заполните форму ниже" 
+                       Style="{StaticResource mediumFontStyle}" 
+                       Margin="0 10 0 0" HorizontalAlignment="Center"
+                       FontWeight="Bold"/>
+            
+            <TextBlock Text="Имя" 
+                       Style="{StaticResource mediumFontStyle}" 
+                       Margin="10 30 0 0" HorizontalAlignment="Left"/>
+            <TextBox x:Name="regFirstName" HorizontalAlignment="Stretch"
+                     Margin="10 10 10 0" />
+            
+            <TextBlock Text="Фамилия" 
+                       Style="{StaticResource mediumFontStyle}" 
+                       Margin="10 10 0 0" HorizontalAlignment="Left"/>
+            <TextBox x:Name="regLastName" HorizontalAlignment="Stretch"
+                     Margin="10 10 10 0" />
+           
+            <TextBlock Text="Имя пользователя (логин)" 
+                       Style="{StaticResource mediumFontStyle}" 
+                       Margin="10 10 0 0" HorizontalAlignment="Left"/>
+            <TextBox x:Name="regUsername" HorizontalAlignment="Stretch"
+                     Margin="10 10 10 0" />
+            
+            <TextBlock Text="Пароль" 
+                       Style="{StaticResource mediumFontStyle}" 
+                       Margin="10 10 0 0" HorizontalAlignment="Left"/>
+            <PasswordBox x:Name="regPassword" Margin="10 10 10 0"/>
+            
+            <TextBlock Text="Повтор пароля" 
+                       Style="{StaticResource mediumFontStyle}" 
+                       Margin="10 10 0 0" HorizontalAlignment="Left"/>
+            <PasswordBox x:Name="regPasswordCommit" Margin="10 10 10 0"/>
+            <StackPanel Orientation="Horizontal" Margin="10">
+                <Button Content="Назад" Click="return_Back" Style="{StaticResource mediumButtonStyle}" 
+                        MinWidth="100" HorizontalAlignment="Center"
+                        Margin="0 0 10 0"/>
+                <Button Content="Создать" Click="create_Profile"  Style="{StaticResource mediumButtonStyle}" 
+                        MinWidth="100" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
