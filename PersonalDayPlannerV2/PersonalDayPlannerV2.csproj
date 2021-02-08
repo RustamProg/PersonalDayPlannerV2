@@ -83,6 +83,12 @@
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI_elements\CalendarButton.cs" />
+    <Compile Include="UI_elements\DatePickWindowModal.xaml.cs">
+      <DependentUpon>DatePickWindowModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI_elements\DayPanel.xaml.cs">
+      <DependentUpon>DayPanel.xaml</DependentUpon>
+    </Compile>
     <Page Include="AllResourceDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +110,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegistrationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI_elements\DatePickWindowModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI_elements\DayPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -144,7 +158,18 @@
   <ItemGroup>
     <Resource Include="Resources\logo.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\calendar-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\settings-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\accept-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\exit-icon.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

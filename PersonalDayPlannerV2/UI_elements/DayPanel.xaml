@@ -1,0 +1,38 @@
+﻿<Window x:Class="PersonalDayPlannerV2.UI_elements.DayPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonalDayPlannerV2.UI_elements"
+        mc:Ignorable="d"
+        Title="DayPanel" Height="500" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
+        Background="Transparent" AllowsTransparency="True">
+    <Grid>
+        <Border CornerRadius="10" Background="RosyBrown">
+            <StackPanel Margin="30 50 30 30">
+                <Grid Margin="0 0 0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding Header}" Style="{StaticResource largeFontStyle}" 
+                               Margin="0 0 0 5" HorizontalAlignment="Left"
+                               VerticalAlignment="Center" Grid.Column="0"/>
+                    <TextBlock Text="{Binding Date}" Style="{StaticResource mediumFontStyle}"
+                               HorizontalAlignment="Right" Margin="5"
+                               VerticalAlignment="Center" Grid.Column="1"/>
+                </Grid>
+                <TextBlock Text="Описание" Style="{StaticResource mediumFontStyle}" FontWeight="Bold" Margin="10"/>
+                <TextBlock Text="{Binding TextBody}" Style="{StaticResource mediumFontStyle}" Margin="10" />
+                <ComboBox Margin="10" MinHeight="40" MinWidth="100"
+                          Cursor="Hand"
+                          Background="{Binding BoxColor}">
+                    <ComboBoxItem Content="Готово" IsSelected="{Binding IsDone}"/>
+                    <ComboBoxItem Content="В работе" IsSelected="{Binding IsInProgress}"/>
+                </ComboBox>
+                <Button Background="IndianRed" Content="Close" MinHeight="100" 
+                        Click="Close_Modal"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

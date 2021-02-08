@@ -3,33 +3,92 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc ="PersonalDayPlannerV2.UI_elements"
         xmlns:local="clr-namespace:PersonalDayPlannerV2"
         mc:Ignorable="d"
-        Title="PlannerWindow" Height="600" Width="1000" WindowStartupLocation="CenterScreen" Background="#F08080" >
+        Title="PlannerWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" Background="#B03030" 
+        WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.05*"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="0.15*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <GridSplitter Grid.Row="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                          Background="Black" Height="2" ShowsPreview="True"/>
-        <Grid Grid.Row="2">
+
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.25*" />
-                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="3" Style="{StaticResource exitButtonStyle}" 
+                    Margin="10" Click="Exit_Program">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Выйти" VerticalAlignment="Center"
+                                   Margin="0 0 8 0"/>
+                        <Image Source="Resources/exit-icon.png" Width="30"
+                               VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*"/>
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
-            <GridSplitter Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                          Background="Black" Width="2" ShowsPreview="True"/>
-
+            <Grid Grid.Row="2" Grid.Column="0" Margin="5 0 0 5"  >
+                <Border CornerRadius="10" Background="#D86262"/>
+                <StackPanel Margin="0 10 0 10">
+                    <Button Click="OpenModalDatePickModal"
+                            Style="{StaticResource menuButtonStyle}"
+                            Margin="0 10 0 0" HorizontalAlignment="Stretch">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/calendar-icon.png" Width="35"
+                                       VerticalAlignment="Center" Margin="0 0 7 0"/>
+                                <TextBlock Text="Выбрать месяц" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Style="{StaticResource menuButtonStyle}"
+                            HorizontalAlignment="Stretch">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/accept-icon.png" Width="35"
+                                       VerticalAlignment="Center" Margin="0 0 7 0"/>
+                                <TextBlock Text="Цели" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                    <Button Style="{StaticResource menuButtonStyle}"
+                            HorizontalAlignment="Stretch">
+                        <Button.Content>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Resources/settings-icon.png" Width="35"
+                                       VerticalAlignment="Center" Margin="0 0 7 0"/>
+                                <TextBlock Text="Настройки" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Grid>
+           
 
             <Grid x:Name="mainGridView" Grid.Row="0" Grid.Column="2">
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled"
-                              VerticalScrollBarVisibility="Auto">
-                    <WrapPanel x:Name="bigCalendar" Margin="10">
-
-                    </WrapPanel>
+                              VerticalScrollBarVisibility="Auto"
+                              Margin="10 0 5 5">
+                    <ScrollViewer.Content>
+                        <Grid>
+                            <Border Background="#D88181" CornerRadius="10" />
+                            <WrapPanel x:Name="bigCalendar" Margin="10" HorizontalAlignment="Center">
+                            
+                            </WrapPanel>
+                        </Grid>
+                    </ScrollViewer.Content>
                 </ScrollViewer>
             </Grid>
             

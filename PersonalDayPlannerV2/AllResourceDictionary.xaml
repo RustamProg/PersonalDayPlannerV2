@@ -45,14 +45,15 @@
         <Setter Property="FontFamily" Value="Helvetica" />
         <Setter Property="FontSize" Value="30" />
         <Setter Property="Cursor" Value="Hand" />
-        <Setter Property="MinHeight" Value="80" />
-        <Setter Property="MinWidth" Value="140" />
+        <Setter Property="MinHeight" Value="100" />
+        <Setter Property="MinWidth" Value="175" />
+        <Setter Property="Margin" Value="3" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
                     <Grid>
-                        <Border BorderThickness="1" 
-                                CornerRadius="4"
+                        <Border BorderThickness="0" 
+                                CornerRadius="0"
                                 Padding="3"
                                 x:Name="ButtonBorder"
                                 Background="#ba7777">
@@ -65,6 +66,85 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="ButtonBorder" Property="Background" Value="#C0C0C0" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style TargetType="Button" x:Key="monthButton">
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="MinWidth" Value="70" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontFamily" Value="Helvetica" />
+        <Setter Property="FontWeight" Value="ExtraBold" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="7" Background="AntiqueWhite">
+                        <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" Value="0.8" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="menuButtonStyle">
+        <Setter Property="MinHeight" Value="70" />
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="FontFamily" Value="Helvetica" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" Margin="10"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#D88181" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#843C3C" />
+                        </Trigger> 
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="exitButtonStyle">
+        <Setter Property="Background" Value="#A60000" />
+        <Setter Property="MinHeight" Value="40" />
+        <Setter Property="MinWidth" Value="70" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="FontFamily" Value="Helvetica" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="Foreground" Value="AntiqueWhite" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" CornerRadius="10">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#BF3030" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FF4040" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

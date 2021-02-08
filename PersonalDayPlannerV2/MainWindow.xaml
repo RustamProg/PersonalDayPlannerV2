@@ -51,12 +51,12 @@
                 <TextBox Style="{StaticResource mediumFontStyle}" 
                          Margin="20 0 20 10"
                          x:Name="usernameField"
-                         Text="rustam6546"/>
+                         Text="adminadmin"/>
                 <TextBlock Text="Пароль" 
                            Style="{StaticResource mediumFontStyle}" 
                            HorizontalAlignment="Center"
                            Margin="0 0 0 10"/>
-                <PasswordBox Margin="20 0 20 10" x:Name="passwordField" Password="12345678"/>
+                <PasswordBox Margin="20 0 20 10" x:Name="passwordField" Password="adminadmin"/>
                 <Button Margin="50 10 50 0" Content="Войти" 
                         MinHeight="30"
                         Click="login_Profile"
