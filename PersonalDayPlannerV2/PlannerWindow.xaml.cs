@@ -1,6 +1,8 @@
-﻿using PersonalDayPlannerV2.UI_elements;
+﻿using PersonalDayPlannerV2.db_models;
+using PersonalDayPlannerV2.UI_elements;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +22,9 @@ namespace PersonalDayPlannerV2
     /// </summary>
     public partial class PlannerWindow : Window
     {
-        private string CurrentYear { get; set; }
+        private string CurrentYear { get; set; }    
         private string CurrentMonth { get; set; }
+        private int UserID { get; set; }
         private Dictionary<string, int> months = new Dictionary<string, int>
         {
             {"Январь", 1 },
@@ -37,50 +40,96 @@ namespace PersonalDayPlannerV2
             {"Ноябрь", 11 },
             {"Декабрь", 12 },
         };
+        ApplicationContext db;
 
-        public PlannerWindow()
+        public PlannerWindow(User user)
         {
             InitializeComponent();
+            this.DataContext = user;            
+            UserID = user.id;
 
-            CurrentMonth = "Январь";
-            CurrentYear = "2021";
+            db = new ApplicationContext();
+            db.Notes.Load();
+
+            DateTime today = DateTime.Now;
+            CurrentMonth = today.ToString("MMMM");
+            CurrentYear = today.ToString("yyyy");
 
             int month = months[CurrentMonth];
             int year = int.Parse(CurrentYear);
-
-            MakeDaysGrid(DateTime.DaysInMonth(year, month));
+            MakeDaysGrid(DateTime.DaysInMonth(year, month), month, year);
         }
 
-        private void MakeDaysGrid(int days)
+        private void MakeDaysGrid(int days, int month, int year)
         {
             bigCalendar.Children.Clear();
+            monthHeader.Text = CurrentMonth;
+            yearHeader.Text = CurrentYear + " год";
 
-            for (int i = 1; i <= days; i++)
-            {
-                Button calendarButton = new Button()
+            for (int day = 1; day <= days; day++)
+            {               
+                StackPanel onButtonStackPanel = new StackPanel()
                 {
-                    Content = i.ToString(),
-                    Style = (Style)FindResource("calendarDayButton"),
+                    Orientation = Orientation.Vertical,
+                    VerticalAlignment = VerticalAlignment.Stretch,
+                    HorizontalAlignment = HorizontalAlignment.Left
+                };               
+
+                TextBlock monthDayText = new TextBlock()
+                {
+                    Text = day.ToString(),
                 };
 
-                calendarButton.Click += OpenModalDayWindow;
-                bigCalendar.Children.Add(calendarButton);
+                onButtonStackPanel.Children.Add(monthDayText);               
+
+                var day_info = db.Notes.Where(v => v.Day == day && v.Month == month && v.Year == year && v.User_ID == UserID).ToList();
+                if (day_info.Count > 0)
+                {
+                    StackPanel innerDotsPanel = new StackPanel()
+                    {
+                        Orientation = Orientation.Horizontal
+                    };
+                    for (int notes = 0; notes < day_info.Count; notes++)
+                    {                       
+                        Ellipse taskEllipse = new Ellipse()
+                        {
+                            Width = 10,
+                            Height = 10,
+                            Stroke = Brushes.Red,
+                            Fill = Brushes.Red,
+                            Margin = new Thickness(8)
+                        };
+                        innerDotsPanel.Children.Add(taskEllipse);                       
+                    }
+                    onButtonStackPanel.Children.Add(innerDotsPanel);
+                }
+
+                Button calendarButton = new Button()
+                {
+                    Content = onButtonStackPanel,
+                    Style = (Style)FindResource("calendarDayButton"),
+                };
+                calendarButton.Tag = day;
+                calendarButton.Click += (s, e) => OpenModalDayWindow(s, e, day_info);
+                bigCalendar.Children.Add(calendarButton);      
             }
 
         }
 
-        public void OpenModalDayWindow(object sender, RoutedEventArgs e)
-        {
-            DayPanel dayPanel = new DayPanel()
-            {
-                Header = "Empty title",
-                Date = "01-01-2002",
-                TextBody = "Day panel sample",
-                BoxColor = "Red",
-                IsDone = "False",
-                IsInProgress = "True"
-            };
+        public void OpenModalDayWindow(object sender, RoutedEventArgs e, List<Note> notes_list)
+        {           
+            DayPanel dayPanel = new DayPanel(notes_list);
+            dayPanel.UserID = UserID;
+            dayPanel.Day = (int)((Button)sender).Tag;
+            dayPanel.Month = months[CurrentMonth];
+            dayPanel.Year = int.Parse(CurrentYear);
             dayPanel.ShowDialog();
+            if (dayPanel.DialogResult == true)
+            {
+                int month = months[CurrentMonth];
+                int year = int.Parse(CurrentYear);
+                MakeDaysGrid(DateTime.DaysInMonth(year, month), month, year);
+            }
         }
 
         private void OpenModalDatePickModal(object sender, RoutedEventArgs e)
@@ -90,13 +139,11 @@ namespace PersonalDayPlannerV2
             {
                 CurrentMonth = datePickWindowModal.SelectedMonth;
                 CurrentYear = datePickWindowModal.SelectedYear;
-                MessageBox.Show(CurrentMonth + CurrentYear);
             }
 
             int month = months[CurrentMonth];
             int year = int.Parse(CurrentYear);
-
-            MakeDaysGrid(DateTime.DaysInMonth(year, month));
+            MakeDaysGrid(DateTime.DaysInMonth(year, month), month, year);
         }
 
         public void SetPickedDate(string year, string month)
@@ -107,6 +154,13 @@ namespace PersonalDayPlannerV2
         private void Exit_Program(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Hide();
         }
     }
 }

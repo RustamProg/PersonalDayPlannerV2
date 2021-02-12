@@ -49,8 +49,7 @@ namespace PersonalDayPlannerV2
             {
                 if (user.Password == passwordField.Password)
                 {
-                    MessageBox.Show($"Добро пожаловать, {user.First_name} {user.Last_name}", "Приветствие", MessageBoxButton.OK, MessageBoxImage.Information);
-                    PlannerWindow plannerWindow = new PlannerWindow();
+                    PlannerWindow plannerWindow = new PlannerWindow(user);
                     plannerWindow.Show();
                     this.Hide();
                 }

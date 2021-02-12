@@ -8,7 +8,7 @@
         Title="MainWindow" Height="500" Width="800" Background="#9e2828" WindowStartupLocation="CenterScreen" WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.06*"/> 
+            <RowDefinition Height="0.08*"/> 
             <RowDefinition Height="*"/> 
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
@@ -29,10 +29,17 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="14" Content="x" 
+            <Button Grid.Column="14"
                     Style="{StaticResource mediumButtonStyle}" 
                     Click="close_Program" Margin="3"
-                    VerticalAlignment="Center" FontSize="12"/>
+                    VerticalAlignment="Center" FontSize="12">
+                <Button.Content>
+                    <Grid>
+                        <Line X1="0" Y1="0" X2="12" Y2="12" Stroke="Black" />
+                        <Line X1="12" Y1="0" X2="0" Y2="12" Stroke="Black" />
+                    </Grid>
+                </Button.Content>
+            </Button>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -51,12 +58,12 @@
                 <TextBox Style="{StaticResource mediumFontStyle}" 
                          Margin="20 0 20 10"
                          x:Name="usernameField"
-                         Text="adminadmin"/>
+                         Text=""/>
                 <TextBlock Text="Пароль" 
                            Style="{StaticResource mediumFontStyle}" 
                            HorizontalAlignment="Center"
                            Margin="0 0 0 10"/>
-                <PasswordBox Margin="20 0 20 10" x:Name="passwordField" Password="adminadmin"/>
+                <PasswordBox Margin="20 0 20 10" x:Name="passwordField" Password=""/>
                 <Button Margin="50 10 50 0" Content="Войти" 
                         MinHeight="30"
                         Click="login_Profile"

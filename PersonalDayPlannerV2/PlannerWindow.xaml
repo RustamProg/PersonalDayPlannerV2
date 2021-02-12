@@ -6,7 +6,8 @@
         xmlns:uc ="PersonalDayPlannerV2.UI_elements"
         xmlns:local="clr-namespace:PersonalDayPlannerV2"
         mc:Ignorable="d"
-        Title="PlannerWindow" Height="650" Width="1000" WindowStartupLocation="CenterScreen" Background="#B03030" 
+        Title="PlannerWindow" Height="650" Width="1000" 
+        WindowStartupLocation="CenterScreen" Background="#B03030" 
         WindowStyle="None">
     <Grid>
         <Grid.RowDefinitions>
@@ -19,10 +20,29 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition />
                 <ColumnDefinition />
-                <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="3" Style="{StaticResource exitButtonStyle}" 
-                    Margin="10" Click="Exit_Program">
+            <Border CornerRadius="7" Background="AntiqueWhite" Margin="10">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="7" ShadowDepth="1" RenderingBias="Quality"
+                                      Direction="-90"/>
+                </Border.Effect>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
+                
+                        <Image Source="Resources/profile-icon.png" Margin="5"/>
+                    <TextBlock Text="{Binding First_name}" VerticalAlignment="Center" FontSize="22"
+                               Margin="10 0 7 0" Foreground="DarkGray"/>
+                    <TextBlock Text="{Binding Last_name}" VerticalAlignment="Center" FontSize="22"
+                               Foreground="DarkGray"/>
+                </StackPanel>
+            </Border>
+
+            <Button Grid.Column="1" Style="{StaticResource logoutButtonStyle}" 
+                    Margin="10" Click="Logout_Click">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="7" ShadowDepth="1" RenderingBias="Quality"
+                                      Direction="-90"/>
+                </Button.Effect>
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="Выйти" VerticalAlignment="Center"
@@ -32,6 +52,20 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
+            
+            <Button Grid.Column="2" Style="{StaticResource exitButtonStyle}" Click="Exit_Program"
+                    Margin="10">
+                <Button.Effect>
+                    <DropShadowEffect BlurRadius="7" ShadowDepth="1" RenderingBias="Quality"
+                                      Direction="-90"/>
+                </Button.Effect>
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Закрыть" VerticalAlignment="Center" />
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            
         </Grid>
         
         <Grid Grid.Row="1">
@@ -40,8 +74,16 @@
                 <ColumnDefinition Width="1*" />
             </Grid.ColumnDefinitions>
             <Grid Grid.Row="2" Grid.Column="0" Margin="5 0 0 5"  >
-                <Border CornerRadius="10" Background="#D86262"/>
+                <Border CornerRadius="7" Background="#D86262"/>
                 <StackPanel Margin="0 10 0 10">
+                    <TextBlock x:Name="monthHeader" Text="MONTH" 
+                               Style="{StaticResource largeFontStyle}"
+                               HorizontalAlignment="Center"
+                               Margin="10" />
+                    <TextBlock x:Name="yearHeader" Text="YEAR" 
+                               Style="{StaticResource mediumFontStyle}"
+                               HorizontalAlignment="Center"
+                               Margin="10" />
                     <Button Click="OpenModalDatePickModal"
                             Style="{StaticResource menuButtonStyle}"
                             Margin="0 10 0 0" HorizontalAlignment="Stretch">
@@ -75,7 +117,7 @@
                     </Button>
                 </StackPanel>
             </Grid>
-           
+
 
             <Grid x:Name="mainGridView" Grid.Row="0" Grid.Column="2">
                 <ScrollViewer HorizontalScrollBarVisibility="Disabled"
@@ -83,10 +125,11 @@
                               Margin="10 0 5 5">
                     <ScrollViewer.Content>
                         <Grid>
-                            <Border Background="#D88181" CornerRadius="10" />
-                            <WrapPanel x:Name="bigCalendar" Margin="10" HorizontalAlignment="Center">
-                            
-                            </WrapPanel>
+                            <Border Background="#D88181" CornerRadius="7">
+                                <WrapPanel x:Name="bigCalendar" Margin="10" HorizontalAlignment="Center">
+
+                                </WrapPanel>
+                            </Border>
                         </Grid>
                     </ScrollViewer.Content>
                 </ScrollViewer>

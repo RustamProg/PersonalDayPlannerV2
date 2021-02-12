@@ -75,6 +75,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="db_models\ApplicationContext.cs" />
+    <Compile Include="db_models\Note.cs" />
     <Compile Include="db_models\User.cs" />
     <Compile Include="PlannerWindow.xaml.cs">
       <DependentUpon>PlannerWindow.xaml</DependentUpon>
@@ -82,7 +83,9 @@
     <Compile Include="RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI_elements\CalendarButton.cs" />
+    <Compile Include="UI_elements\AddDayPanel.xaml.cs">
+      <DependentUpon>AddDayPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI_elements\DatePickWindowModal.xaml.cs">
       <DependentUpon>DatePickWindowModal.xaml</DependentUpon>
     </Compile>
@@ -110,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegistrationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI_elements\AddDayPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\exit-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\profile-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -1,0 +1,34 @@
+﻿<Window x:Class="PersonalDayPlannerV2.UI_elements.AddDayPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonalDayPlannerV2.UI_elements"
+        mc:Ignorable="d"
+        Title="AddDayPanel" Height="600" Width="600"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        WindowStyle="None" AllowsTransparency="True" Background="Transparent">
+    <Grid>
+        <Border Background="RosyBrown" CornerRadius="10">
+            <StackPanel Orientation="Vertical" Margin="50">
+                
+                <TextBlock Text="Форма добавления записи" 
+                           Style="{StaticResource largeFontStyle}" 
+                           HorizontalAlignment="Center"/>
+                
+                <TextBlock Text="Заголовок" Style="{StaticResource mediumFontStyle}" 
+                           Margin="0 30 0 10"/>
+                <TextBox x:Name="titleTextField" Margin="0" FontSize="18"/>
+
+                <TextBlock Text="Описание" Style="{StaticResource mediumFontStyle}" 
+                           Margin="0 30 0 10"/>
+                <TextBox x:Name="descriptionTextField" Margin="0" FontSize="18"
+                         MinLines="10" TextWrapping="Wrap"/>
+
+                <Button x:Name="saveNote" Content="Сохранить запись" 
+                        Margin="150 30 150 0" MinHeight="50" Background="IndianRed"
+                        FontSize="20" FontFamily="Helvetica" Click="saveNote_Click"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

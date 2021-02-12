@@ -6,32 +6,28 @@
         xmlns:local="clr-namespace:PersonalDayPlannerV2.UI_elements"
         mc:Ignorable="d"
         Title="DayPanel" Height="500" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize"
-        Background="Transparent" AllowsTransparency="True">
+        Background="Transparent" AllowsTransparency="True" ShowInTaskbar="False">
     <Grid>
         <Border CornerRadius="10" Background="RosyBrown">
             <StackPanel Margin="30 50 30 30">
-                <Grid Margin="0 0 0 10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Text="{Binding Header}" Style="{StaticResource largeFontStyle}" 
-                               Margin="0 0 0 5" HorizontalAlignment="Left"
-                               VerticalAlignment="Center" Grid.Column="0"/>
-                    <TextBlock Text="{Binding Date}" Style="{StaticResource mediumFontStyle}"
-                               HorizontalAlignment="Right" Margin="5"
-                               VerticalAlignment="Center" Grid.Column="1"/>
-                </Grid>
-                <TextBlock Text="Описание" Style="{StaticResource mediumFontStyle}" FontWeight="Bold" Margin="10"/>
-                <TextBlock Text="{Binding TextBody}" Style="{StaticResource mediumFontStyle}" Margin="10" />
-                <ComboBox Margin="10" MinHeight="40" MinWidth="100"
-                          Cursor="Hand"
-                          Background="{Binding BoxColor}">
-                    <ComboBoxItem Content="Готово" IsSelected="{Binding IsDone}"/>
-                    <ComboBoxItem Content="В работе" IsSelected="{Binding IsInProgress}"/>
-                </ComboBox>
-                <Button Background="IndianRed" Content="Close" MinHeight="100" 
-                        Click="Close_Modal"/>
+
+                <ScrollViewer Height="350" MinHeight="350" VerticalScrollBarVisibility="Visible"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <ScrollViewer.Content>
+                        <StackPanel x:Name="notesScroll" Orientation="Vertical">
+                            
+                        </StackPanel>
+                    </ScrollViewer.Content>
+                </ScrollViewer>
+
+                <StackPanel Orientation="Horizontal" Margin="10">
+                    <Button Background="IndianRed" Content="Закрыть" MinHeight="50" 
+                        Click="Close_Modal" Margin="5" MinWidth="120"
+                            Style="{StaticResource exitButtonStyle}"/>
+                    <Button Background="IndianRed" Content="Добавить запись" MinHeight="50"
+                            MinWidth="190" Margin="5" Click="Add_Note"
+                            Style="{StaticResource exitButtonStyle}"/>
+                </StackPanel>
             </StackPanel>
         </Border>
     </Grid>

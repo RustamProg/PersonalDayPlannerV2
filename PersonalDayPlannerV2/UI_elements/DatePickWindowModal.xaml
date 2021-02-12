@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:PersonalDayPlannerV2.UI_elements"
         mc:Ignorable="d"
         Title="DatePickWindowModal" Height="300" Width="400" AllowsTransparency="True"
-        Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Background="Transparent" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        ShowInTaskbar="False">
     <Grid>
         <Border CornerRadius="10" Background="RosyBrown">
             <StackPanel Orientation="Vertical" Margin="10">
@@ -14,18 +15,11 @@
                 <ComboBox Margin="50 20 50 10" MinHeight="40"
                           Background="LawnGreen"
                           x:Name="yearComboBox">
-                    <ComboBoxItem Content="2000" IsSelected="True"></ComboBoxItem>
-                    <ComboBoxItem Content="2001"></ComboBoxItem>
-                    <ComboBoxItem Content="2002"></ComboBoxItem>
-                    <ComboBoxItem Content="2003"></ComboBoxItem>
-                    <ComboBoxItem Content="2004"></ComboBoxItem>
-                    <ComboBoxItem Content="2005"></ComboBoxItem>
-                    <ComboBoxItem Content="2006"></ComboBoxItem>
-                    <ComboBoxItem Content="2007"></ComboBoxItem>
-                    <ComboBoxItem Content="2008"></ComboBoxItem>
-                    <ComboBoxItem Content="2009"></ComboBoxItem>
-                    <ComboBoxItem Content="2010"></ComboBoxItem>
-                    <ComboBoxItem Content="2011"></ComboBoxItem>
+                    <ComboBoxItem Content="2021" IsSelected="True"></ComboBoxItem>
+                    <ComboBoxItem Content="2022"></ComboBoxItem>
+                    <ComboBoxItem Content="2023"></ComboBoxItem>
+                    <ComboBoxItem Content="2024"></ComboBoxItem>
+                    <ComboBoxItem Content="2025"></ComboBoxItem>
                 </ComboBox>
                 <WrapPanel Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center" >
                     <Button Style="{StaticResource monthButton}" Content="Январь" Click="Month_Click"/>
