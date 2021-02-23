@@ -180,6 +180,14 @@
   <ItemGroup>
     <Resource Include="Resources\profile-icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Screenshots\calendar.png" />
+    <Resource Include="Screenshots\daynotes.png" />
+    <Resource Include="Screenshots\login.png" />
+    <Resource Include="Screenshots\monthselect.png" />
+    <Resource Include="Screenshots\noteinput.png" />
+    <Resource Include="Screenshots\signin.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
