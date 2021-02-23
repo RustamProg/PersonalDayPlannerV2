@@ -5,7 +5,7 @@ This is login form, where you can enter your username and password to get access
 
 ![Login form](https://github.com/RustamProg/PersonalDayPlannerV2/blob/master/PersonalDayPlannerV2/Screenshots/login.png?raw=true)
 
-If you don't have a profile, you can create new. There are some restrictions when you create a profile, i.e. minimum username length is 8 chars
+If you don't have a profile, you can create new. There are some restrictions when you create a profile, e.g. minimum username length is 8 chars
 
 ![Sign in form](https://github.com/RustamProg/PersonalDayPlannerV2/blob/master/PersonalDayPlannerV2/Screenshots/signin.png?raw=true)
 
